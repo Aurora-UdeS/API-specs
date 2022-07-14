@@ -1,13 +1,13 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: EOS Pay Me
-  description: Time and Expense tracking app.
+  title: Timesheet API
+  description: Submit and get timesheets for your employees.
   contact:
     name: API Support
     email: Aurora@usherbrooke.ca
 paths:
-  /timesheet/submit:
+  /submit:
     post:
       summary: submit
       description: Submit a new timesheet
@@ -19,11 +19,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/timesheet_submit'
+              $ref: '#/components/schemas/submit'
       responses:
         '200':
           description: Expected response to a valid request
-  '/timesheet/{userId}':
+  '/{userId}':
     get:
       summary: list
       description: List all timesheet for a user
@@ -71,7 +71,7 @@ components:
         type: string
         format: date
   schemas:
-    timesheet_submit:
+    submit:
       type: object
       required:
         - employeeId
@@ -110,16 +110,3 @@ components:
               type: boolean
             payed:
               type: boolean
-    contributions:
-      type: object
-      required:
-        - contributions
-      properties:
-        contribution:
-          type: object
-          properties:
-            project:
-              type: string
-            timespan:
-              type: number
-              format: float
