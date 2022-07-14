@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: GithubActionFetcher API
+  description: Get Github action for your employees.
+  contact:
+    name: API Support
+    email: Aurora@usherbrooke.ca
+paths:
+  '/contributions/{userId}':
+    get:
+        summary: list
+        description: List all contributions for a user
+        tags:
+          - contribution
+        parameters:
+          - $ref: '#/components/parameters/userId'
+          - $ref: '#/components/parameters/dateBegin'
+          - $ref: '#/components/parameters/dateEnd'
+        responses:
+          '200':
+            description: Expected response to a valid request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/contributions'
+
+components:
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: The id of the user to retrieve
+      schema:
+        type: string
+    dateBegin:
+      name: dateBegin
+      in: query
+      description: Lower bound for the date search
+      required: true
+      schema:
+        type: string
+        format: date
+    dateEnd:
+      name: dateEnd
+      in: query
+      description: Higher bound for the date search
+      required: true
+      schema:
+        type: string
+        format: date
+  schemas:
+    contributions:
+      type: object
+      required:
+        - contributions
+      properties:
+        contributions:
+          type: object
+          properties:
+            project:
+              type: string
+            timespan:
+              type: number
+              format: float
