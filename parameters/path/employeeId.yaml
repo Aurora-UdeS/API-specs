@@ -1,0 +1,6 @@
+name: employeeId
+in: path
+required: true
+description: The id of the employee to retrieve
+schema:
+  type: string

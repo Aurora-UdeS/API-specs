@@ -1,0 +1,14 @@
+get:
+  summary: list
+  description: List all timesheet for a user
+  tags:
+    - timesheet
+  parameters:
+    - $ref: '../parameters/path/userId.yaml'
+  responses:
+    '200':
+      description: Expected response to a valid request
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/timesheet.yaml'

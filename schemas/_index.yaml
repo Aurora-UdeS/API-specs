@@ -1,0 +1,8 @@
+timesheet_submit:
+  $ref: './timesheet_submit.yaml'
+
+timesheet:
+  $ref: './timesheet.yaml'
+
+contributions:
+  $ref: './contributions.yaml'

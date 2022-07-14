@@ -1,0 +1,19 @@
+type: object
+required: 
+  - timeslots
+properties:
+  timeslots: 
+    type: object
+    properties:
+      date:
+        type: string
+        format: date
+      project:
+        type: string
+      timespan: 
+        type: number
+        format: float
+      approved: 
+        type: boolean
+      payed:
+        type: boolean

@@ -1,0 +1,7 @@
+name: dateEnd
+in: query
+description: Higher bound for the date search
+required: true
+schema:
+  type: string
+  format: date

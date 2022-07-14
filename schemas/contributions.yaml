@@ -1,0 +1,12 @@
+type: object
+required: 
+  - contributions
+properties:
+  contribution: 
+    type: object
+    properties:
+      project:
+        type: string
+      timespan: 
+        type: number
+        format: float

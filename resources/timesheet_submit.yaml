@@ -1,0 +1,15 @@
+post:
+  summary: submit
+  description: Submit a new timesheet
+  tags:
+    - timesheet
+  requestBody:
+    description: info on the submited timesheet
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/timesheet_submit.yaml'
+  responses:
+    '200':
+      description: Expected response to a valid request

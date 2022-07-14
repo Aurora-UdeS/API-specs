@@ -1,0 +1,19 @@
+type: object
+required:
+  - employeeId
+  - timeslots
+properties:
+  employeeId:
+    type: string
+  timeslots:
+    type: object
+    properties:
+      date:
+        type: string
+        format: date
+      project:
+        type: string
+      timespan: 
+        type: number
+        format: float
+      

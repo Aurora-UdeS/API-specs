@@ -1,0 +1,7 @@
+name: dateBegin
+in: query
+description: Lower bound for the date search
+required: true
+schema:
+  type: string
+  format: date

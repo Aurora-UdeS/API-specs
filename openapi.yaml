@@ -1,0 +1,18 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: EOS Pay Me
+  description: Time and Expense tracking app.
+  contact:
+    name: API Support
+    email: Aurora@usherbrooke.ca
+paths:
+  /timesheet/submit:
+    $ref: "./resources/timesheet_submit.yaml"
+  /timesheet/{userId}:
+    $ref: './resources/timesheet.yaml'
+components:
+  parameters:
+    $ref: "./parameters/_index.yaml"
+  schemas:
+    $ref: "./schemas/_index.yaml"

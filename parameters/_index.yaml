@@ -1,0 +1,12 @@
+userId: 
+  $ref: './path/userId.yaml'
+
+employeeId:
+  $ref: './path/employeeId.yaml'
+
+dateBegin:
+  $ref: './query/dateBegin.yaml'
+
+dateEnd:
+  $ref: './query/dateEnd.yaml'
+
