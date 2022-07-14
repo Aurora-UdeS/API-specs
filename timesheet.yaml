@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Timesheet API
+  description: Submit and get timesheets for your employees.
+  contact:
+    name: API Support
+    email: Aurora@usherbrooke.ca
+paths:
+  /submit:
+    post:
+      summary: submit
+      description: Submit a new timesheet
+      tags:
+        - timesheet
+      requestBody:
+        description: info on the submited timesheet
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/submit'
+      responses:
+        '200':
+          description: Expected response to a valid request
+  '/{userId}':
+    get:
+      summary: list
+      description: List all timesheet for a user
+      tags:
+        - timesheet
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/timesheet'
+components:
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: The id of the user to retrieve
+      schema:
+        type: string
+    employeeId:
+      name: employeeId
+      in: path
+      required: true
+      description: The id of the employee to retrieve
+      schema:
+        type: string
+    dateBegin:
+      name: dateBegin
+      in: query
+      description: Lower bound for the date search
+      required: true
+      schema:
+        type: string
+        format: date
+    dateEnd:
+      name: dateEnd
+      in: query
+      description: Higher bound for the date search
+      required: true
+      schema:
+        type: string
+        format: date
+  schemas:
+    submit:
+      type: object
+      required:
+        - employeeId
+        - timeslots
+      properties:
+        employeeId:
+          type: string
+        timeslots:
+          type: object
+          properties:
+            date:
+              type: string
+              format: date
+            project:
+              type: string
+            timespan:
+              type: number
+              format: float
+    timesheet:
+      type: object
+      required:
+        - timeslots
+      properties:
+        timeslots:
+          type: object
+          properties:
+            date:
+              type: string
+              format: date
+            project:
+              type: string
+            timespan:
+              type: number
+              format: float
+            approved:
+              type: boolean
+            payed:
+              type: boolean
