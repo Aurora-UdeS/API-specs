@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Expense API
+  description: Submit and get Expense of your employees.
+  contact:
+    name: API Support
+    email: Aurora@usherbrooke.ca
+paths:
+  /submit:
+    post:
+      summary: submit
+      description: Submit a new expense
+      tags:
+        - expense
+      requestBody:
+        description: info on the submitted expense
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/expense'
+      responses:
+        '200':
+          description: Expected response to a valid request
+  '/{userId}':
+    get:
+      summary: list
+      description: List all expense of an employee
+      tags:
+        - expense
+      parameters:
+        - $ref: '#/components/parameters/employeeId'
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/expenses'
+components:
+  parameters:
+    employeeId:
+      name: employeeId
+      in: path
+      required: true
+      description: The id of the employee to retrieve
+      schema:
+        type: string
+  schemas:
+    expense:
+      type: object
+      required:
+        - employeeId
+        - amount
+        - justification
+        - team
+        - date
+        - currency
+      properties:
+        employeeId:
+          type: string
+        amount:
+          type: number
+          format: float
+        justification:
+          type: string
+        team:
+          type: string
+        date:
+          type: string
+          format: date
+        currency:
+          type: string
+    expenses:
+      type: object
+      required:
+        - expenses
+      properties:
+        expenses:
+          type: array
+          items:
+            $ref: '#/components/schemas/expense'
