@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: User API
+  description: Manage User.
+  contact:
+    name: API Support
+    email: Aurora@usherbrooke.ca
+paths:
+  /newUser:
+    post:
+      summary: create
+      description: Create a new User
+      tags:
+        - User
+      requestBody:
+        description: Info on the new User
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        '200':
+          description: Expected response to a valid request
+  'info/{userId}':
+    get:
+      summary: list
+      description: List all the info on a user
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+    put:
+      summery: edit
+      description: Edit a user's info
+      tags:
+       - User
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      requestBody:
+        description:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/field'
+      responses:
+        '200':
+          description: Expected response to a valid request
+components:
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: The id of the user to retrieve
+      schema:
+        type: string
+  schemas:
+    user:
+      type: object
+      required:
+        - employeeId
+        - name
+        - githubId
+        - walletId
+      properties:
+        employeeId:
+          type: string
+        name:
+          type: string
+        githubId:
+          type: string
+        walletId:
+          type: string
+    field:
+      type: object
+      required: 
+        - field
+      properties:
+        field:
+          type: string
+    
