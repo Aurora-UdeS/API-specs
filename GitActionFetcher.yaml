@@ -61,6 +61,6 @@ components:
           properties:
             project:
               type: string
-            timespan:
+            percentage:
               type: number
               format: float
