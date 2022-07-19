@@ -57,10 +57,11 @@ components:
         - contributions
       properties:
         contributions:
-          type: object
-          properties:
-            project:
-              type: string
-            percentage:
-              type: number
-              format: float
+          type: array
+          items:
+            properties:
+              project:
+                type: string
+              percentage:
+                type: number
+                format: float
