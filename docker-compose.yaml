@@ -1,0 +1,21 @@
+services:
+  timesheet:
+    build: timesheet/
+    ports:
+      - "9000:9000"
+  expense:
+    build: expense/
+    ports:
+      - "9001:9001"
+  gitaction:
+    build: gitAction/
+    ports:
+      - "9003:9003"
+  user:
+    build: user/
+    ports:
+      - "9002:9002"
+  wsgi:
+    build: .
+    ports:
+      - "5000:5000"
