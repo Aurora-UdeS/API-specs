@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+git_hash=$(git rev-parse --short "$GITHUB_SHA")
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker tag $git_hash aurorapmc.jfrog.io/specs-docker/api-spec:$git_hash
+      run: docker push aurorapmc.jfrog.io/specs-docker/api-spec:$git_hash
