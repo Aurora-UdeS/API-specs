@@ -3,6 +3,8 @@ openapi specs made for every API
 
 ## prerequisites
 [docker](https://docs.docker.com/engine/install/)  
+and 
+[docker compose](https://docs.docker.com/compose/install/)
 You do not need the "desktop" version of docker.
 
 ## Usage
