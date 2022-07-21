@@ -19,5 +19,5 @@ docker compose build
 ``` 
 or you can always do to run and rebuild at the same time:
 ```commandline
-docker-compose up --build
+docker compose up --build
 ```
